@@ -8,11 +8,12 @@ const Input = styled.input`
   border: 1px solid #ccc;
 `
 
-const UnitInput = ({ value, handleInputChange }) => {
+const UnitInput = ({ value, handleInputChange, disabled }) => {
   return <Input
     type='number'
     value={ value }
     onChange={ handleInputChange }
+    readOnly={disabled}
          />
 }
 

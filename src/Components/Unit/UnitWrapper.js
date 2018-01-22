@@ -8,13 +8,14 @@ const UnitWrap = styled.div`
   max-width: 430px;
 `
 
-const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChange }) => {
+const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChange, disabled }) => {
   return (
     <React.Fragment>
       <UnitWrap>
         <UnitInput
           value={ value }
           handleInputChange={ handleInputChange }
+          disabled={disabled}
         />
         <UnitSelect
           unit={ unit }

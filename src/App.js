@@ -36,15 +36,16 @@ class App extends Component {
     console.log(event.target.value)
     this.setState({ unitTwo: event.target.value })
   }
+
   handleFirstInputChange(event) {
     console.log(event.target.value)
     this.setState({ valueOne: event.target.value })
   }
 
-  handleSecondInputChange(event) {
-    console.log(event.target.value)
-    this.setState({ valueTwo: event.target.value })
-  }
+  // handleSecondInputChange(event) {
+  //   console.log(event.target.value)
+  //   this.setState({ valueTwo: event.target.value })
+  // }
 
   componentDidMount() {
     const json = 'https://api.myjson.com/bins/cn3pd'
@@ -72,8 +73,9 @@ class App extends Component {
           />
           <Equals>=</Equals>
           <UnitWrapper
+            disabled={true}
             unit={ unitTwo }
-            value={ valueTwo }
+            value={ valueOne }
             apiData={ apiData }
             handleSelectChange={ this.handleSecondSelectChange.bind(this) }
             // handleInputChange={ this.handleSecondInputChange.bind(this) }
