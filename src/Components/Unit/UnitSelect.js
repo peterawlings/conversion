@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Select = styled.select`
   display: block;
@@ -16,13 +17,13 @@ const Select = styled.select`
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `
 
-const UnitSelect = ({ unit, handleSelectChange, measurements }) => {
+const UnitSelect = ({ unit, handleSelectChange, apiData }) => {
   return (
     <Select
       unit={ unit }
       onChange={ handleSelectChange }
     >
-      {measurements.map((measurement, index) => {
+      {apiData.map((measurement, index) => {
         return (
           <option key={ `tag-${index}` }>
             {measurement.name}
@@ -32,6 +33,12 @@ const UnitSelect = ({ unit, handleSelectChange, measurements }) => {
       })}
     </Select>
   )
+}
+
+UnitSelect.propTypes = {
+  unit: PropTypes.string,
+  handleSelectChange: PropTypes.func,
+  apiData: PropTypes.array
 }
 
 export default UnitSelect

@@ -4,7 +4,6 @@ To run the project
   - [npm start](#npm-start)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
-  - [npm run eject](#npm-run-eject)
 
 
   Notes
@@ -15,3 +14,7 @@ To run the project
   - Use Global styles where appropriate
     - Fonts
     - ClearFix
+  - Second drop down removes options to select dependent on the first
+  - Add transitions to CSS
+  - Add global variables to CSS
+

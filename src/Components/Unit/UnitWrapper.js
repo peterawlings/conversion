@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
 import UnitSelect from './UnitSelect.js'
 import UnitInput from './UnitInput.js'
 
@@ -21,13 +23,23 @@ const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChan
         <UnitSelect
           unit={ unit }
           value={ value }
-          measurements={ apiData }
+          apiData={ apiData }
           handleSelectChange={ handleSelectChange }
           handleInputChange={ handleInputChange }
         />
       </UnitWrap>
     </React.Fragment>
   )
+}
+
+UnitWrapper.propTypes = {
+  unit: PropTypes.string,
+  value: PropTypes.string,
+  apiData: PropTypes.array,
+  handleSelectChange: PropTypes.func,
+  handleInputChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  error: PropTypes.bool
 }
 
 export default UnitWrapper
