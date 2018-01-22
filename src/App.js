@@ -20,32 +20,71 @@ const Equals = styled.div`
 
 class App extends Component {
   state = {
-    unitOne: '',
-    unitTwo: '',
-    valueOne: '',
+    unitOne: 'Pound',
+    unitTwo: 'Pound',
+    valueOne: '1',
     valueTwo: '',
-    apiData: []
+    apiData: [],
+    error: false
   }
   // Better way to do this?
   handleFirstSelectChange(event) {
-    console.log(event.target.value)
-    this.setState({ unitOne: event.target.value })
+    this.setState(
+      {
+        unitOne: event.target.value
+      },
+      () => {
+        this.conversion(this.state.unitOne, this.state.unitTwo)
+      }
+    )
   }
 
   handleSecondSelectChange(event) {
-    console.log(event.target.value)
-    this.setState({ unitTwo: event.target.value })
+    this.setState(
+      {
+        unitTwo: event.target.value
+      },
+      () => {
+        this.conversion(this.state.unitOne, this.state.unitTwo)
+      }
+    )
   }
 
   handleFirstInputChange(event) {
     console.log(event.target.value)
-    this.setState({ valueOne: event.target.value })
+    this.setState(
+      {
+        valueOne: event.target.value
+      },
+      () => {
+        this.conversion(this.state.unitOne, this.state.unitTwo)
+      }
+    )
   }
 
   // handleSecondInputChange(event) {
   //   console.log(event.target.value)
   //   this.setState({ valueTwo: event.target.value })
   // }
+
+  conversion(firstUnit, secondUnit) {
+    const { valueOne, valueTwo } = this.state
+    if (firstUnit === 'Pound' && secondUnit === 'Kilograms') {
+      console.log('test', valueOne * 2.2)
+      this.setState({ valueTwo: +(valueOne * 2.2).toFixed(2) })
+    } else if (firstUnit === 'Pound' && secondUnit === 'Ounces') {
+      this.setState({ valueTwo: +(valueOne * 16).toFixed(2) })
+    } else if (firstUnit === 'Feet' && secondUnit === 'Inches') {
+      this.setState({ valueTwo: +(valueOne * 12).toFixed(2) })
+    } else if (firstUnit === 'Feet' && secondUnit === 'Meters') {
+      this.setState({ valueTwo: +(valueOne * 0.3).toFixed(2) })
+    } else if (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces') {
+      this.setState({ valueTwo: +(valueOne * 16).toFixed(2) })
+    } else {
+      this.setState({ error: true })
+    }
+     console.log(valueOne, valueTwo)
+  }
 
   componentDidMount() {
     const json = 'https://api.myjson.com/bins/cn3pd'
@@ -59,7 +98,7 @@ class App extends Component {
   }
 
   render() {
-    const { unitOne, unitTwo, valueOne, valueTwo, apiData } = this.state
+    const { unitOne, unitTwo, valueOne, valueTwo, apiData, error } = this.state
 
     return (
       <React.Fragment>
@@ -70,14 +109,16 @@ class App extends Component {
             apiData={ apiData }
             handleSelectChange={ this.handleFirstSelectChange.bind(this) }
             handleInputChange={ this.handleFirstInputChange.bind(this) }
+            error={error}
           />
           <Equals>=</Equals>
           <UnitWrapper
-            disabled={true}
+            disabled={ true }
             unit={ unitTwo }
-            value={ valueOne }
+            value={ valueTwo }
             apiData={ apiData }
             handleSelectChange={ this.handleSecondSelectChange.bind(this) }
+            error={error}
             // handleInputChange={ this.handleSecondInputChange.bind(this) }
           />
         </Wrapper>

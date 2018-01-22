@@ -23,10 +23,10 @@ const UnitSelect = ({ unit, handleSelectChange, measurements }) => {
       onChange={ handleSelectChange }
     >
       {measurements.map((measurement, index) => {
-        console.log(measurement)
         return (
           <option key={ `tag-${index}` }>
-            {measurement.name} {`(${measurement.attr.unit})`}
+            {measurement.name}
+            {/* {`(${measurement.attr.unit})`} */}
           </option>
         )
       })}

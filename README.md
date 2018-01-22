@@ -10,3 +10,8 @@ To run the project
   Notes
   - Functional stateless components where possible
   - ESlint with Prettier
+
+  Improvements
+  - Use Global styles where appropriate
+    - Fonts
+    - ClearFix
