@@ -89,29 +89,24 @@ class App extends Component {
     this.setState({ error: false })
 
     if (
-      (firstUnit === 'Pound' && secondUnit === 'Kilograms') ||
-      (firstUnit === 'Kilograms' && secondUnit === 'Pound')
+      (firstUnit === 'Pound' && secondUnit === 'Kilograms')
     ) {
       // Conditional prevents 0 appearing in second input when no value in first
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : '' })
     } else if (
-      (firstUnit === 'Pound' && secondUnit === 'Ounces') ||
-      (firstUnit === 'Ounces' && secondUnit === 'Pound')
+      (firstUnit === 'Pound' && secondUnit === 'Ounces')
     ) {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : '' })
     } else if (
-      (firstUnit === 'Feet' && secondUnit === 'Inches') ||
-      (firstUnit === 'Inches' && secondUnit === 'Feet')
+      (firstUnit === 'Feet' && secondUnit === 'Inches')
     ) {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 12).toFixed(2) : '' })
     } else if (
-      (firstUnit === 'Feet' && secondUnit === 'Meters') ||
-      (firstUnit === 'Meters' && secondUnit === 'Feet')
+      (firstUnit === 'Feet' && secondUnit === 'Meters')
     ) {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 0.3).toFixed(2) : '' })
     } else if (
-      (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces') ||
-      (firstUnit === 'Fluid Ounces' && secondUnit === 'Pint')
+      (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces')
     ) {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : '' })
     } else {
