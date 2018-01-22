@@ -1,0 +1,19 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": [2, "never"],
+    "arrow-parens": [2, "always"],
+    "quote-props": [2, "as-needed"],
+    "quotes": [2, "single"],
+    "jsx-quotes": [2, "prefer-single"],
+    "object-curly-spacing": [1, "always"],
+    "max-len": [1, 110, { "ignoreStrings": true }],
+    "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
+    "react/jsx-first-prop-new-line": [1, "multiline"],
+    "react/jsx-tag-spacing": 1,
+    "react/self-closing-comp": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-indent-props": [1, 2],
+    "react/jsx-curly-spacing": [1, "always"]
+  }
+}
