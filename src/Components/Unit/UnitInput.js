@@ -18,7 +18,6 @@ const Input = styled.input`
 const UnitInput = ({ value, handleInputChange, disabled, error }) => {
   return (
     <Input
-      type='number'
       value={ value }
       onChange={ handleInputChange }
       readOnly={ disabled || error } // Input disabled on error and 'disabled' prop passed in
