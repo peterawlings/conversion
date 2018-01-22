@@ -17,4 +17,5 @@ To run the project
   - Second drop down removes options to select dependent on the first
   - Add transitions to CSS
   - Add global variables to CSS
+  - Standardise breakpoints - use global variables (possibly CSS varibles)
 
