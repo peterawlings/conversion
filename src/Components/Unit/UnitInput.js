@@ -28,7 +28,7 @@ const UnitInput = ({ value, handleInputChange, disabled, error }) => {
 }
 
 UnitInput.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.number,
   handleSelectChange: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool
