@@ -17,19 +17,16 @@ const Select = styled.select`
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `
 
-const UnitSelect = ({ unit, handleSelectChange, apiData }) => {
+const UnitSelect = ({ unit, value, handleSelectChange, apiData }) => {
+  console.log()
   return (
     <Select
       unit={ unit }
       onChange={ handleSelectChange }
+      value={ unit }
     >
       {apiData.map((measurement, index) => {
-        return (
-          <option key={ `tag-${index}` }>
-            {measurement.name}
-            {/* {`(${measurement.attr.unit})`} */}
-          </option>
-        )
+        return <option key={ `tag-${index}` }>{measurement.name}</option>
       })}
     </Select>
   )
