@@ -7,7 +7,7 @@ const Input = styled.input`
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin-right: -1px;
+  margin-right: 6px;
   transition: all 0.5s ease-in-out;
 
   border-color: ${(props) => (props.error ? '#d44a4a' : '#ccc')};
