@@ -102,14 +102,24 @@ class App extends Component {
     if (firstUnit === 'Pound' && secondUnit === 'Kilograms') {
       // Conditional prevents 0 appearing in second input when no value in first
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : undefined })
+    } else if (firstUnit === 'Kilograms' && secondUnit === 'Pound') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 2.2).toFixed(2) : undefined })
     } else if (firstUnit === 'Pound' && secondUnit === 'Ounces') {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : undefined })
+    } else if (firstUnit === 'Ounces' && secondUnit === 'Pound') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : undefined })
     } else if (firstUnit === 'Feet' && secondUnit === 'Inches') {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 12).toFixed(2) : undefined })
+    } else if (firstUnit === 'Inches' && secondUnit === 'Feet') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 12).toFixed(2) : undefined })
     } else if (firstUnit === 'Feet' && secondUnit === 'Meters') {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 0.3).toFixed(2) : undefined })
+    } else if (firstUnit === 'Meters' && secondUnit === 'Feet') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 0.3).toFixed(2) : undefined })
     } else if (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces') {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : undefined })
+    } else if (firstUnit === 'Fluid Ounces' && secondUnit === 'Pint') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : undefined })
     } else {
       this.setState({
         error: true,
@@ -133,7 +143,7 @@ class App extends Component {
     const { unitOne, unitTwo, valueOne, valueTwo, apiData, error } = this.state
     return (
       <React.Fragment>
-        <Header>Converteriser</Header>
+        <Header>Conversioniser</Header>
         <Wrapper>
           <UnitWrapper
             unit={ unitOne }
@@ -151,7 +161,6 @@ class App extends Component {
             apiData={ apiData }
             handleSelectChange={ this.handleSecondSelectChange.bind(this) }
             error={ error }
-            // handleInputChange={ this.handleSecondInputChange.bind(this) }
           />
         </Wrapper>
         <ErrorMessage error={ error }>Sorry, this combination cannot be converted.</ErrorMessage>
