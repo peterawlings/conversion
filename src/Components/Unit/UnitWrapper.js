@@ -8,6 +8,10 @@ import UnitInput from './UnitInput.js'
 const UnitWrap = styled.div`
   display: flex;
   max-width: 430px;
+  padding: 0 20px;
+  @media (max-width: 700px) {
+    flex-basis: 100%;
+  }
 `
 
 const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChange, disabled, error }) => {
@@ -17,8 +21,8 @@ const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChan
         <UnitInput
           value={ value }
           handleInputChange={ handleInputChange }
-          disabled={disabled}
-          error={error}
+          disabled={ disabled }
+          error={ error }
         />
         <UnitSelect
           unit={ unit }
@@ -34,7 +38,7 @@ const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChan
 
 UnitWrapper.propTypes = {
   unit: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.number,
   apiData: PropTypes.array,
   handleSelectChange: PropTypes.func,
   handleInputChange: PropTypes.func,

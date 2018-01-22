@@ -9,6 +9,9 @@ const Wrapper = styled.div`
   justify-content: center;
   max-width: 800px;
   margin: 0 auto;
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+  }
 `
 const Header = styled.h1`
   text-align: center;
@@ -16,6 +19,9 @@ const Header = styled.h1`
   font-weight: 100;
   letter-spacing: 3px;
   font-size: 60px;
+  @media (max-width: 430px) {
+    font-size: 40px;
+  }
 `
 
 const Equals = styled.div`
@@ -25,6 +31,12 @@ const Equals = styled.div`
   font-size: 30px;
   text-align: center;
   align-items: center;
+  margin-top: -10px;
+  @media (max-width: 700px) {
+    flex-basis: 100%;
+    margin-bottom: 6px;
+    margin-top: 0;
+  }
 `
 
 const ErrorMessage = styled.div`
@@ -42,9 +54,9 @@ const ErrorMessage = styled.div`
 class App extends Component {
   state = {
     unitOne: 'Pound',
-    unitTwo: 'Pound',
-    valueOne: '1',
-    valueTwo: '',
+    unitTwo: 'Kilograms',
+    valueOne: undefined,
+    valueTwo: undefined,
     apiData: [],
     error: false
   }
@@ -63,7 +75,7 @@ class App extends Component {
   handleSecondSelectChange(event) {
     this.setState(
       {
-        unitTwo: event.target.value
+        unitTwo: (event.target.value)
       },
       () => {
         this.handleConversion(this.state.unitOne, this.state.unitTwo)
@@ -72,10 +84,9 @@ class App extends Component {
   }
 
   handleFirstInputChange(event) {
-    console.log(event.target.value)
     this.setState(
       {
-        valueOne: event.target.value
+        valueOne: Number(event.target.value)
       },
       () => {
         this.handleConversion(this.state.unitOne, this.state.unitTwo)
@@ -88,32 +99,22 @@ class App extends Component {
 
     this.setState({ error: false })
 
-    if (
-      (firstUnit === 'Pound' && secondUnit === 'Kilograms')
-    ) {
+    if (firstUnit === 'Pound' && secondUnit === 'Kilograms') {
       // Conditional prevents 0 appearing in second input when no value in first
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : '' })
-    } else if (
-      (firstUnit === 'Pound' && secondUnit === 'Ounces')
-    ) {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : '' })
-    } else if (
-      (firstUnit === 'Feet' && secondUnit === 'Inches')
-    ) {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 12).toFixed(2) : '' })
-    } else if (
-      (firstUnit === 'Feet' && secondUnit === 'Meters')
-    ) {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 0.3).toFixed(2) : '' })
-    } else if (
-      (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces')
-    ) {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : '' })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : undefined })
+    } else if (firstUnit === 'Pound' && secondUnit === 'Ounces') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : undefined })
+    } else if (firstUnit === 'Feet' && secondUnit === 'Inches') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 12).toFixed(2) : undefined })
+    } else if (firstUnit === 'Feet' && secondUnit === 'Meters') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 0.3).toFixed(2) : undefined })
+    } else if (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces') {
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : undefined })
     } else {
       this.setState({
         error: true,
-        valueOne: '',
-        valueTwo: ''
+        valueOne: undefined,
+        valueTwo: undefined
       })
     }
   }
@@ -123,7 +124,6 @@ class App extends Component {
     axios
       .get(json)
       .then((response) => {
-        console.log(response.data)
         this.setState({ apiData: response.data })
       })
       .catch((err) => console.log(err))
@@ -131,7 +131,6 @@ class App extends Component {
 
   render() {
     const { unitOne, unitTwo, valueOne, valueTwo, apiData, error } = this.state
-
     return (
       <React.Fragment>
         <Header>Converteriser</Header>
