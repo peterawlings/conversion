@@ -39,7 +39,6 @@ const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChan
 
 UnitWrapper.propTypes = {
   unit: PropTypes.string,
-  value: PropTypes.number,
   apiData: PropTypes.array,
   handleSelectChange: PropTypes.func,
   handleInputChange: PropTypes.func,
