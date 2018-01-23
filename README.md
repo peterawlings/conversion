@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 To run the project
-  - Clone the project
+  - Clone the project or download the zip, unzip it and cd into that directory.
   - Run 'npm install'
   - Run 'npm start'
 
