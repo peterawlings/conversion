@@ -19,6 +19,8 @@ const Header = styled.h1`
   font-weight: 100;
   letter-spacing: 3px;
   font-size: 60px;
+  margin-bottom: 15px;
+  margin-top: 70px;
   @media (max-width: 430px) {
     font-size: 40px;
   }
@@ -37,6 +39,16 @@ const Equals = styled.div`
     margin-bottom: 6px;
     margin-top: 0;
   }
+`
+
+const Subtitle = styled.p`
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'helvetica neue', sans-serif;
+  margin-bottom: 80px;
+  color: #848484;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 `
 
 const ErrorMessage = styled.div`
@@ -96,10 +108,11 @@ class App extends Component {
 
   handleConversion(firstUnit, secondUnit) {
     const { valueOne } = this.state
+    // Reset error state to false
     this.setState({ error: false })
-
+    // Perform calculation
     if (firstUnit === 'Pound' && secondUnit === 'Kilograms') {
-      // Conditional prevents 0 appearing in second input when no value in first
+      // Conditional prevents '0' appearing in second input when no value in first
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : undefined })
     } else if (firstUnit === 'Kilograms' && secondUnit === 'Pound') {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 2.2).toFixed(2) : undefined })
@@ -127,6 +140,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Assumption: The data is coming from an external API
     const json = 'https://api.myjson.com/bins/cn3pd'
     axios
       .get(json)
@@ -141,6 +155,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header>Conversioniser</Header>
+        <Subtitle>Convert units of measurement</Subtitle>
         <Wrapper>
           <UnitWrapper
             unit={ unitOne }
