@@ -1,8 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import UnitInput from './Components/Unit/UnitInput.js'
+import { shallow, configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+configure({ adapter: new Adapter() })
+
+it('render an input', () => {
+  const output = shallow(
+    <UnitInput />
+  )
+  expect(output).toMatchSnapshot()
+})
+
+it('renders props correctly', () => {
+  const output = shallow(<UnitInput />)
+  console.log(output.props())
+})
