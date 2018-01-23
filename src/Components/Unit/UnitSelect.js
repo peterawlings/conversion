@@ -16,7 +16,6 @@ const Select = styled.select`
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `
-
 const UnitSelect = ({ unit, value, handleSelectChange, apiData }) => {
   console.log()
   return (

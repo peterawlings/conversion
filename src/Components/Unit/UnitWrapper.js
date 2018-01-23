@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
+// Separate different types of import with an empty line
 import UnitSelect from './UnitSelect.js'
 import UnitInput from './UnitInput.js'
 
@@ -14,6 +14,7 @@ const UnitWrap = styled.div`
   }
 `
 
+// Container for Unit drop down and Input
 const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChange, disabled, error }) => {
   return (
     <React.Fragment>
@@ -21,7 +22,7 @@ const UnitWrapper = ({ unit, value, apiData, handleSelectChange, handleInputChan
         <UnitInput
           value={ value }
           handleInputChange={ handleInputChange }
-          disabled={ disabled }
+          disabled={ disabled } // Assumption: The only field that can be edited is the first. The second input field is based on that of the first
           error={ error }
         />
         <UnitSelect
