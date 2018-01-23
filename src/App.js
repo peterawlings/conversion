@@ -75,7 +75,7 @@ class App extends Component {
   handleSecondSelectChange(event) {
     this.setState(
       {
-        unitTwo: (event.target.value)
+        unitTwo: event.target.value
       },
       () => {
         this.handleConversion(this.state.unitOne, this.state.unitTwo)
@@ -86,7 +86,7 @@ class App extends Component {
   handleFirstInputChange(event) {
     this.setState(
       {
-        valueOne: Number(event.target.value)
+        valueOne: Number(event.target.value) // Ensure value is a number
       },
       () => {
         this.handleConversion(this.state.unitOne, this.state.unitTwo)
@@ -96,7 +96,6 @@ class App extends Component {
 
   handleConversion(firstUnit, secondUnit) {
     const { valueOne } = this.state
-
     this.setState({ error: false })
 
     if (firstUnit === 'Pound' && secondUnit === 'Kilograms') {
@@ -122,9 +121,7 @@ class App extends Component {
       this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : undefined })
     } else {
       this.setState({
-        error: true,
-        valueOne: undefined,
-        valueTwo: undefined
+        error: true
       })
     }
   }
