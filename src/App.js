@@ -25,7 +25,6 @@ const Header = styled.h1`
     font-size: 40px;
   }
 `
-
 const Equals = styled.div`
   display: flex;
   width: 80px;
@@ -40,7 +39,6 @@ const Equals = styled.div`
     margin-top: 0;
   }
 `
-
 const Subtitle = styled.p`
   margin: 0 auto;
   text-align: center;
@@ -50,7 +48,6 @@ const Subtitle = styled.p`
   font-weight: 300;
   letter-spacing: 0.5px;
 `
-
 const ErrorMessage = styled.div`
   text-align: center;
   font-family: 'helvetica neue', sans-serif;
@@ -62,13 +59,12 @@ const ErrorMessage = styled.div`
   margin-top: ${(props) => (props.error ? '30px' : '50px')};
   transition: opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
 `
-
 class App extends Component {
   state = {
     unitOne: 'Pound',
     unitTwo: 'Kilograms',
-    valueOne: undefined,
-    valueTwo: undefined,
+    valueOne: '',
+    valueTwo: '',
     apiData: [],
     error: false
   }
@@ -113,28 +109,30 @@ class App extends Component {
     // Perform calculation
     if (firstUnit === 'Pound' && secondUnit === 'Kilograms') {
       // Conditional prevents '0' appearing in second input when no value in first
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 2.2).toFixed(2) : '' })
     } else if (firstUnit === 'Kilograms' && secondUnit === 'Pound') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 2.2).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 2.2).toFixed(2) : '' })
     } else if (firstUnit === 'Pound' && secondUnit === 'Ounces') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : '' })
     } else if (firstUnit === 'Ounces' && secondUnit === 'Pound') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : '' })
     } else if (firstUnit === 'Feet' && secondUnit === 'Inches') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 12).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 12).toFixed(2) : '' })
     } else if (firstUnit === 'Inches' && secondUnit === 'Feet') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 12).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 12).toFixed(2) : '' })
     } else if (firstUnit === 'Feet' && secondUnit === 'Meters') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 0.3).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 0.3).toFixed(2) : '' })
     } else if (firstUnit === 'Meters' && secondUnit === 'Feet') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 0.3).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 0.3).toFixed(2) : '' })
     } else if (firstUnit === 'Pint' && secondUnit === 'Fluid Ounces') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne * 16).toFixed(2) : '' })
     } else if (firstUnit === 'Fluid Ounces' && secondUnit === 'Pint') {
-      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : undefined })
+      this.setState({ valueTwo: valueOne > 0 ? +(valueOne / 16).toFixed(2) : '' })
     } else {
       this.setState({
-        error: true
+        error: true,
+        valueOne: '',
+        valueTwo: ''
       })
     }
   }
