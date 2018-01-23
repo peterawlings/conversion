@@ -5,11 +5,11 @@ To run the project
   - Run 'npm install'
   - Run 'npm start'
 
-  **Instructions**
+  ####Instructions
   - Select a unit from each drop down and enter a number in the first input to get a result in the second.
 
 
-  **Notes**
+  ####Notes
   - Functional stateless components where possible
   - Component names are capitalised
   - ESlint with Prettier. Uses configuration in '.eslintrc.json'
@@ -17,7 +17,7 @@ To run the project
   - Uses styled components for CSS
   - Responsive
 
-  **Improvements**
+  ####Improvements
   - Use Global styles where appropriate
     - Fonts
     - ClearFix
@@ -26,4 +26,5 @@ To run the project
   - Standardise breakpoints - use global variables (possibly CSS varibles)
   - More thorough testing
   - App performance
+  - Better Proptype checking
 
